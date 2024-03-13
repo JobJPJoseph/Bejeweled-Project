@@ -34,7 +34,7 @@ Swapping the middle `🍊` with the `🍇` below it will match three `🍇` in a
 
 ```
  🥝 🍓 🥥
-         
+
  🥝 🍊 🍊
 ```
 
@@ -139,3 +139,13 @@ Valid colors are:
 * `Screen.setMessage(msg)` takes in a string to be printed below the grid each
   time it is rendered.
 
+#### How we are going to do this
+  We are going to first focus on setting up the grid.
+
+  # Phase 1
+  We need to create an 8 by 8 grid whichi is already done. Change Screen.setGridlines to true.
+
+  # Phase 2
+  We need to make sure to be able to navigate thoughout the grid. To do so we need to implement curor into the game through commands.
+
+  # Phase 3

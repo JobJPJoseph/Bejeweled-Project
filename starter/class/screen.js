@@ -34,16 +34,19 @@ class Screen {
     Screen.textColors = [];
     Screen.backgroundColors = [];
 
+    // Sets the grid itself and the text and background colors
     for (let row = 0 ; row < numRows ; row++) {
       Screen.grid.push(new Array(numCols).fill(" "));
       Screen.textColors.push(new Array(numCols).fill(Screen.defaultTextColor));
       Screen.backgroundColors.push(new Array(numCols).fill(Screen.defaultBackgroundColor));
     }
 
+    // sets and pushes the quit command into Screen.commands
     Screen.setQuitMessage("\nThank you for playing! \nGoodbye.\n");
     const quitCmd = new Command('q', 'quit the game', Screen.quit);
     Screen.commands['q'] = quitCmd;
 
+    // An alternative to making a while true
     Screen.initialized = true;
 
     Screen.waitForInput();
