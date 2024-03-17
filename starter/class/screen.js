@@ -7,6 +7,8 @@ class Screen {
   static numRows = 0;
   static grid = [];
 
+  static fruits = ["🥝", "🍓", "🥥", "🍇", "🍊"];
+
   static borderChar = " ";
   static spacerCount = 1;
 
@@ -36,7 +38,7 @@ class Screen {
 
     // Sets the grid itself and the text and background colors
     for (let row = 0 ; row < numRows ; row++) {
-      Screen.grid.push(new Array(numCols).fill(" "));
+      Screen.grid.push(new Array(numCols).fill(" ")); // We need tp make adjustments to this
       Screen.textColors.push(new Array(numCols).fill(Screen.defaultTextColor));
       Screen.backgroundColors.push(new Array(numCols).fill(Screen.defaultBackgroundColor));
     }

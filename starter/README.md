@@ -143,9 +143,13 @@ Valid colors are:
   We are going to first focus on setting up the grid.
 
   # Phase 1
-  We need to create an 8 by 8 grid whichi is already done. Change Screen.setGridlines to true.
+  We need to create an 8 by 8 grid which is already done. Change Screen.setGridlines to true.
 
   # Phase 2
-  We need to make sure to be able to navigate thoughout the grid. To do so we need to implement curor into the game through commands.
+  We need to make sure to be able to navigate thoughout the grid. To do so we need to implement cursor into the game through commands.
 
   # Phase 3
+  We will focus on setting up the board. This will involve the specs.
+
+  We need to make some adjustments to the screen class. We need to create static array that contains fruits that are already provided.
+  The goal is randomly pull from the provided array to fill the index
