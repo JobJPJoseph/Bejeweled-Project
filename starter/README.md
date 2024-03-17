@@ -152,4 +152,4 @@ Valid colors are:
   We will focus on setting up the board. This will involve the specs.
 
   We need to make some adjustments to the screen class. We need to create static array that contains fruits that are already provided.
-  The goal is randomly pull from the provided array to fill the index
+  The goal is randomly pull from the provided array to fill the grid.

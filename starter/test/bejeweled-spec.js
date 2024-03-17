@@ -32,11 +32,18 @@ describe('Screen', function () {
   describe('randomFruit', function () {
 
     it('should call Math.random', function () {
+      const randomSpy = chai.spy.on(Math, 'random');
 
+      Screen.randomFruit();
+
+      expect(randomSpy).to.have.been.called;
     });
 
     it('should return a random fruit from Screen.fruits', function () {
+      const actual = Screen.randomFruit();
+      const expected = ["🥝", "🍓", "🥥", "🍇", "🍊"];
 
+      expect(expected).to.be.include(actual);
     });
 
   });

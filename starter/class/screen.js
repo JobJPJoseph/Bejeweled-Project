@@ -54,6 +54,12 @@ class Screen {
     Screen.waitForInput();
   }
 
+  // added Method
+  static randomFruit() {
+    const index = Math.floor(Math.random() * Screen.fruits.length);
+    return Screen.fruits[index];
+  }
+
   static setGridlines(gridLines) {
     Screen.gridLines = gridLines;
     Screen.render();
