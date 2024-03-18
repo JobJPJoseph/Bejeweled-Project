@@ -14,6 +14,7 @@ describe('Screen', function () {
 
   beforeEach(function () {
     Screen = require('../class/screen.js');
+    Screen.initialize(8, 8);
   });
 
   it('should have a static property call fruits that is a type of array', function () {
@@ -44,6 +45,28 @@ describe('Screen', function () {
       const expected = ["🥝", "🍓", "🥥", "🍇", "🍊"];
 
       expect(expected).to.be.include(actual);
+    });
+
+  });
+
+  describe('Initialize', function () {
+
+    context('Screen.grid', function () {
+
+      it('should return true for every index in Screen.grid is included in Screen.fruits', function () {
+        const grid = Screen.grid;
+        const expected = ["🥝", "🍓", "🥥", "🍇", "🍊"];
+
+        console.log(grid);
+        for (let i = 0; i < grid.length; i++) {
+          const row = grid[i];
+
+          expect(row.every(elem => expected.includes(elem))).to.equal(true);
+        }
+
+        // false positive
+      });
+
     });
 
   });

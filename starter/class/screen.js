@@ -38,7 +38,15 @@ class Screen {
 
     // Sets the grid itself and the text and background colors
     for (let row = 0 ; row < numRows ; row++) {
-      Screen.grid.push(new Array(numCols).fill(" ")); // We need tp make adjustments to this
+      // Screen.grid.push(new Array(numCols).fill(" ")); // We need tp make adjustments to this
+      // Screen.grid.push(new Array(numCols).fill(Screen.randomFruit()));
+
+      Screen.grid.push(new Array(numCols));
+
+      for (let col = 0; col < numCols; col++) {
+        Screen.grid[row][col] = Screen.randomFruit();
+      }
+
       Screen.textColors.push(new Array(numCols).fill(Screen.defaultTextColor));
       Screen.backgroundColors.push(new Array(numCols).fill(Screen.defaultBackgroundColor));
     }
@@ -51,7 +59,7 @@ class Screen {
     // An alternative to making a while true
     Screen.initialized = true;
 
-    Screen.waitForInput();
+    // Screen.waitForInput();
   }
 
   // added Method
