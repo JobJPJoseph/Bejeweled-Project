@@ -153,3 +153,20 @@ Valid colors are:
 
   We need to make some adjustments to the screen class. We need to create static array that contains fruits that are already provided.
   The goal is randomly pull from the provided array to fill the grid.
+
+  # Phase 4
+  Since now we filled up the grid with fruits. We need to create commands that allow us to pick up a fruit and switch it with another.
+
+  # Phase 5
+    A method that checks for streaks horizontally/vertically
+      if true, callback
+      if false, do nothing
+
+  # Phase 6
+    A method that removes the fruits at the 3 indices
+      if confirmed remove them and place random fruits there.
+      Continue to remove them until there is not streak there.
+
+  # Phase 7
+    A method that records the amount of each fruit there is in the current context of the game
+      Note: This become more of a thing with a smaller grid.

@@ -42,6 +42,42 @@ class Bejeweled {
       Screen.render();
     });
 
+    let getInput = {};
+
+    Screen.addCommand('g', "Get cursor", () => {
+      getInput['position'] = this.cursor.cursorCurrentPosition(); // Is an Object
+      getInput['char'] = Screen.grid[getInput.position.row][getInput.position.col];
+      // console.log(input);
+      // console.log(Screen.grid[input.row][input.col]);
+      console.log('getInput: ', getInput)
+    });
+
+    Screen.addCommand('p', 'Place cursor', () => {
+
+      if(Object.keys(getInput).length !== 0) {
+        console.log('getting called');
+        const placeInput = {};
+        placeInput['position'] = this.cursor.cursorCurrentPosition(); // Is an Object
+        placeInput['char'] = Screen.grid[placeInput.position.row][placeInput.position.col];
+
+
+        // We now need to switch them.
+        console.log(getInput.char);
+        console.log(placeInput.char);
+
+        console.log(placeInput.position.row, placeInput.position.col, getInput.char);
+        console.log(getInput.position.row, getInput.position.col, placeInput.char.length);
+
+        Screen.setGrid(placeInput.position.row, placeInput.position.col, getInput.char);
+        Screen.setGrid(getInput.position.row, getInput.position.col, placeInput.char);
+        getInput = {};
+        Screen.render();
+      } else {
+        console.log('Choose an input first');
+      }
+
+    });
+
     Screen.render();
   }
 

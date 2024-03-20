@@ -17,6 +17,10 @@ describe('Screen', function () {
     Screen.initialize(8, 8);
   });
 
+  after(function () {
+    Screen.quit();
+  });
+
   it('should have a static property call fruits that is a type of array', function () {
     expect(Screen.fruits).to.exist;
     expect(Screen.fruits.length).to.equal(5);
@@ -49,6 +53,7 @@ describe('Screen', function () {
 
   });
 
+  // Add tests for setting up a basic board
   describe('Initialize', function () {
 
     context('Screen.grid', function () {
@@ -57,18 +62,20 @@ describe('Screen', function () {
         const grid = Screen.grid;
         const expected = ["🥝", "🍓", "🥥", "🍇", "🍊"];
 
-        console.log(grid);
         for (let i = 0; i < grid.length; i++) {
           const row = grid[i];
 
           expect(row.every(elem => expected.includes(elem))).to.equal(true);
         }
 
-        // false positive
       });
 
     });
 
+  });
+
+  describe('validSwap', function () {
+    // This will focuse on checking horizontal
   });
 
 });
@@ -76,22 +83,13 @@ describe('Screen', function () {
 
 describe ('Bejeweled', function () {
 
-  // Add tests for setting up a basic board
-  // let bejeweled;
-
-  // it('should successfully create the Bejeweled class', function () {
-  //   expect(Bejeweled).to.exist;
-  // });
-
-  // beforeEach(function () {
-  //   const Screen = require('../class/screen.js');
-  //   // bejeweled = new Bejeweled();
-  // });
-
   // Add tests for a valid swap that matches 3
+    // This is saying after a swap, is there a streak
 
   // Add tests for swaps that set up combos
+    // All this is saying is the callback called more the once.
 
   // Add tests to check if there are no possible valid moves
+    // This would be Phase 7
 
 });
