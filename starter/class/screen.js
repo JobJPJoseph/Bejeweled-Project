@@ -28,7 +28,48 @@ class Screen {
 
   static initialized = false;
 
+  /*
+  We are going to refactor the initilize so that it follows the SRP
+  and also make it easier to test pieces of code.
+  */
+
   static initialize(numRows, numCols) {
+    // Screen.numRows = numRows;
+    // Screen.numCols = numCols;
+
+    // Screen.grid = [];
+    // Screen.textColors = [];
+    // Screen.backgroundColors = [];
+
+    // // Sets the grid itself and the text and background colors
+    // for (let row = 0 ; row < numRows ; row++) {
+    //   // Screen.grid.push(new Array(numCols).fill(" ")); // We need tp make adjustments to this
+    //   // Screen.grid.push(new Array(numCols).fill(Screen.randomFruit()));
+
+    //   Screen.grid.push(new Array(numCols));
+
+    //   for (let col = 0; col < numCols; col++) {
+    //     Screen.grid[row][col] = Screen.randomFruit();
+    //   }
+
+    //   Screen.textColors.push(new Array(numCols).fill(Screen.defaultTextColor));
+    //   Screen.backgroundColors.push(new Array(numCols).fill(Screen.defaultBackgroundColor));
+    // }
+
+    Screen.createBoard(numRows, numCols);
+
+    // sets and pushes the quit command into Screen.commands
+    Screen.setQuitMessage("\nThank you for playing! \nGoodbye.\n");
+    const quitCmd = new Command('q', 'quit the game', Screen.quit);
+    Screen.commands['q'] = quitCmd;
+
+    // An alternative to making a while true
+    Screen.initialized = true;
+
+    Screen.waitForInput();
+  }
+
+  static createBoard(numRows, numCols) {
     Screen.numRows = numRows;
     Screen.numCols = numCols;
 
@@ -51,15 +92,6 @@ class Screen {
       Screen.backgroundColors.push(new Array(numCols).fill(Screen.defaultBackgroundColor));
     }
 
-    // sets and pushes the quit command into Screen.commands
-    Screen.setQuitMessage("\nThank you for playing! \nGoodbye.\n");
-    const quitCmd = new Command('q', 'quit the game', Screen.quit);
-    Screen.commands['q'] = quitCmd;
-
-    // An alternative to making a while true
-    Screen.initialized = true;
-
-    Screen.waitForInput();
   }
 
   // added Method
@@ -124,9 +156,6 @@ class Screen {
 
     Screen.commands[key] = new Command(key, description, action);
   }
-
-
-
 
   static setQuitMessage(quitMessage) {
     Screen.quitMessage = quitMessage;
