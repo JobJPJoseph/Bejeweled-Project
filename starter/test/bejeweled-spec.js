@@ -85,11 +85,11 @@ describe ('Bejeweled', function () {
     context('vertical streaks', function () {
 
       it('should return true that there is a vertical streak', function () {
-        expect(Screen.validSwap(grid3)).to.be.false;
+        expect(Screen.validSwap(grid3)).to.be.true;
       });
 
       it('should return false ther no vertical streak was found', function () {
-        expect(Screen.validSwap(grid2)).to.be.true;
+        expect(Screen.validSwap(grid2)).to.be.false;
       });
 
     });

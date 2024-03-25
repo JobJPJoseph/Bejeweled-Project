@@ -139,7 +139,7 @@ class Screen {
     for (let i = 0; i < grid[0].length; i++) {
       char = grid[0][i];
 
-      for (let k = 1; k < grid[i].length; k++) {
+      for (let k = 1; k < grid.length; k++) {
         const elem = grid[k][i];
 
         if (char === elem) {
