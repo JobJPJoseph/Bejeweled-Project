@@ -32,8 +32,6 @@ describe ('Bejeweled', function () {
 
     it('should return a 2-D array where each index contains a fruit', function () {
       Screen.createBoard(8, 8);
-
-      console.log(Screen.fruits)
       const grid = Screen.grid;
 
       for (let i = 0; i < grid.length; i++) {
@@ -49,6 +47,54 @@ describe ('Bejeweled', function () {
   // Add tests for a valid swap that matches 3
     // This is saying after a swap, is there a streak
 
+  describe('validSwap', function () {
+
+    const grid1 = [ // has both
+      ["🥥", "🥝", "🥝","🥝","🍓","🍇","🍊","🍇"],
+      ["🍓", "🥝", "🥥","🍓","🍓","🍇","🍇","🍊"],
+      ["🥝", "🥝", "🍇","🍇","🥥","🥝","🥥","🥝"],
+      ["🍇", "🥝", "🥥","🍓","🍓","🍇","🍇","🍊"]
+    ];
+
+    const grid2 = [ // no streak
+      ["🥥", "🥝", "🍊","🥝","🍓","🍇","🍊","🍇"],
+      ["🍓", "🍊", "🥥","🍓","🍓","🍇","🍇","🍊"],
+      ["🥝", "🥝", "🥥","🍇","🥥","🥝","🥥","🥝"],
+      ["🍇", "🥝", "🍊","🍓","🍓","🍇","🍇","🍊"]
+    ]
+
+    const grid3 = [ // vertical streak
+      ["🥥", "🥝", "🥥","🥝","🍓","🍇","🍊","🍇"],
+      ["🍓", "🥝", "🥥","🍓","🍓","🍇","🍇","🍊"],
+      ["🥝", "🥝", "🍇","🍇","🥥","🥝","🥥","🥝"],
+      ["🍇", "🍊", "🥥","🍓","🍓","🍇","🍇","🍊"]
+    ]
+
+    context('horizontal streaks', function () {
+
+      it('should return true that there is a horizontal streak', function () {
+        expect(Screen.validSwap(grid1)).to.be.true;
+      });
+
+      it('should return false that no horizontal streak was found', function () {
+        expect(Screen.validSwap(grid2)).to.be.false;
+      });
+
+    });
+
+    context('vertical streaks', function () {
+
+      it('should return true that there is a vertical streak', function () {
+        expect(Screen.validSwap(grid3)).to.be.false;
+      });
+
+      it('should return false ther no vertical streak was found', function () {
+        expect(Screen.validSwap(grid2)).to.be.true;
+      });
+
+    });
+
+  });
   // Add tests for swaps that set up combos
     // All this is saying is the callback called more the once.
 

@@ -100,6 +100,63 @@ class Screen {
     return Screen.fruits[index];
   }
 
+  static validSwap(grid) {
+    if (Screen.horizontalStreak(grid)) return true;
+    if (Screen.verticalStreak(grid)) return true;
+    return false;
+  }
+
+  static horizontalStreak(grid) {
+
+    let count = 1;
+    let char = "";
+
+    for (let i = 0; i < grid.length; i++) {
+      char = grid[i][0];
+
+      for (let k = 1; k < grid[i].length; k++) {
+        const elem = grid[i][k];
+
+        if (char === elem) {
+          count++;
+        } else {
+          count = 1;
+          char = elem;
+        }
+
+        if (count === 3) return true;
+      }
+
+    }
+
+    return false;
+  }
+
+  static verticalStreak(grid) {
+    let count = 1;
+    let char = "";
+
+    for (let i = 0; i < grid[0].length; i++) {
+      char = grid[0][i];
+
+      for (let k = 1; k < grid[i].length; k++) {
+        const elem = grid[k][i];
+
+        if (char === elem) {
+          count++;
+        } else {
+          count = 1;
+          char = elem;
+        }
+
+        if (count === 3) return true;
+      }
+
+    }
+
+    return false;
+  }
+
   static setGridlines(gridLines) {
     Screen.gridLines = gridLines;
     Screen.render();
