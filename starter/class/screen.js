@@ -103,8 +103,12 @@ class Screen {
 
   // added Method
   static validSwap(grid) {
-    if (Screen.horizontalStreak(grid)) return true;
-    if (Screen.verticalStreak(grid)) return true;
+    const horizontal = Screen.horizontalStreak(grid);
+    if (horizontal) return horizontal;
+
+    const vertical = Screen.verticalStreak(grid);
+    if (vertical) return vertical;
+
     return false;
   }
 
@@ -166,6 +170,16 @@ class Screen {
     }
 
     return false;
+  }
+
+  static replaceCoordinates(coordinates) {
+
+    for (let i = 0; i < coordinates.length; i++) {
+      const position = coordinates[i];
+
+      Screen.grid[position.row][position.col] = Screen.randomFruit();
+    }
+
   }
 
   static setGridlines(gridLines) {

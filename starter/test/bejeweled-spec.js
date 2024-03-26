@@ -28,6 +28,8 @@ describe ('Bejeweled', function () {
       Screen.createBoard(8, 8);
 
       expect(randomFruitSpy).to.have.been.called;
+
+      chai.spy.restore(Screen, 'randomFruit');
     });
 
     it('should return a 2-D array where each index contains a fruit', function () {
@@ -49,7 +51,7 @@ describe ('Bejeweled', function () {
 
   describe('validSwap', function () {
 
-    const grid1 = [ // has both
+    const grid1 = [ // has horizontal
       ["🥥", "🥝", "🥝","🥝","🍓","🍇","🍊","🍇"],
       ["🍓", "🥥", "🥥","🍓","🍓","🍇","🍇","🍊"],
       ["🥝", "🥝", "🍇","🍇","🥥","🥝","🥥","🥝"],
@@ -73,7 +75,7 @@ describe ('Bejeweled', function () {
     context('horizontal streaks', function () {
 
       it('should return a array of objects that represent coordinates of a found streak', function () {
-        const actual = Screen.horizontalStreak(grid1);
+        const actual = Screen.validSwap(grid1);
         console.log(actual);
 
         const expected = [
@@ -89,7 +91,7 @@ describe ('Bejeweled', function () {
       });
 
       it('should return false that no horizontal streak was found', function () {
-        expect(Screen.horizontalStreak(grid2)).to.be.false;
+        expect(Screen.validSwap(grid2)).to.be.false;
       });
 
     });
@@ -97,7 +99,7 @@ describe ('Bejeweled', function () {
     context('vertical streaks', function () {
 
       it('should return a array of objects that represent coordinates of a found streak', function () {
-        const actual = Screen.verticalStreak(grid3);
+        const actual = Screen.validSwap(grid3);
         console.log(actual);
 
         const expected = [
@@ -113,7 +115,7 @@ describe ('Bejeweled', function () {
       });
 
       it('should return false ther no vertical streak was found', function () {
-        expect(Screen.verticalStreak(grid2)).to.be.false;
+        expect(Screen.validSwap(grid2)).to.be.false;
       });
 
     });
@@ -122,6 +124,28 @@ describe ('Bejeweled', function () {
 
   // Add tests for swaps that set up combos
     // All this is saying is the callback called more the once.
+  describe('replaceCoordinates', function () {
+
+    const grid1 = [ // has horizontal
+      ["🥥", "🥝", "🥝","🥝","🍓","🍇","🍊","🍇"],
+      ["🍓", "🥥", "🥥","🍓","🍓","🍇","🍇","🍊"],
+      ["🥝", "🥝", "🍇","🍇","🥥","🥝","🥥","🥝"],
+      ["🍇", "🥝", "🥥","🍓","🍓","🍇","🍇","🍊"]
+    ];
+
+    it('should call Screen.randomFruit', function () {
+      const randomFruitSpy = chai.spy.on(Screen, 'randomFruit');
+
+      const coordinates = Screen.horizontalStreak(grid1);
+
+      Screen.replaceCoordinates(coordinates);
+
+      expect(randomFruitSpy).to.have.been.called;
+
+      chai.spy.restore(Screen, 'randomFruit');
+    });
+
+  });
 
   // Add tests to check if there are no possible valid moves
     // This would be Phase 7
