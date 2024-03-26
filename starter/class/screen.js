@@ -69,6 +69,7 @@ class Screen {
     Screen.waitForInput();
   }
 
+  // added Method
   static createBoard(numRows, numCols) {
     Screen.numRows = numRows;
     Screen.numCols = numCols;
@@ -100,61 +101,141 @@ class Screen {
     return Screen.fruits[index];
   }
 
+  // added Method
   static validSwap(grid) {
     if (Screen.horizontalStreak(grid)) return true;
     if (Screen.verticalStreak(grid)) return true;
     return false;
   }
 
+  static findStreakCoordinatesH(grid) {
+    // let count = 1;
+    // let char = "";
+    // let coordinates = [];
+
+    // for (let i = 0; i < grid.length; i++) {
+    //   char = grid[i][0];
+    //   coordinates.push({ row: i, column: 0 })
+
+    //   for (let k = 1; k < grid[i].length; k++) {
+    //     const elem = grid[i][k];
+
+    //     if (char === elem) {
+    //       count++;
+    //       coordinates.push({ row: i, column: k })
+
+    //     } else {
+    //       count = 1;
+    //       char = elem;
+    //       coordinates = [
+    //         { row: i, column: k }
+    //       ];
+    //     }
+
+    //     if( count === 3) return coordinates;
+    //   }
+
+    // }
+
+  }
+
+  static findStreakCoordinatesV(grid) {
+    // let count = 1;
+    // let char = "";
+    // let coordinates = [];
+
+    // console.log(grid);
+
+    // for (let i = 0; i < grid[0].length; i++) {
+    //   char = grid[0][i];
+    //   coordinates.push({ row: 0, column: i });
+    //   console.log(coordinates);
+
+    //   for (let k = 1; k < grid.length; k++) {
+    //     const elem = grid[k][i];
+
+    //     if (char === elem) {
+    //       count++;
+    //       coordinates.push({ row: k, column: i });
+    //     } else {
+    //       count = 1;
+    //       char = elem;
+    //       coordinates = [
+    //         { row: k, column: i }
+    //       ];
+    //     }
+
+    //     if (count === 3) return coordinates;
+    //   }
+
+    // }
+
+  }
+
+  // added Method
   static horizontalStreak(grid) {
 
-    let count = 1;
-    let char = "";
+    // Lets try this a different way!
+    let streak = [];
+    let character = grid[0][0];
 
     for (let i = 0; i < grid.length; i++) {
-      char = grid[i][0];
+      let row = grid[i];
 
-      for (let k = 1; k < grid[i].length; k++) {
-        const elem = grid[i][k];
+      for (let k = 0; k < row.length; k++) {
+        let char = row[k];
 
-        if (char === elem) {
-          count++;
+        if (char === character) {
+          streak.push({ row: i, col: k });
         } else {
-          count = 1;
-          char = elem;
+          character = char;
+          streak = [
+            { row: i, col: k }
+          ];
         }
 
-        if (count === 3) return true;
+        if (streak.length === 3) return streak;
       }
 
+      streak = []; // covers the changing of rows edge case
     }
 
     return false;
   }
 
+  // added Method
   static verticalStreak(grid) {
-    let count = 1;
-    let char = "";
+    // let count = 1;
+    // let char = "";
+    // let charArrCheck = [];
 
-    for (let i = 0; i < grid[0].length; i++) {
-      char = grid[0][i];
+    // for (let i = 0; i < grid[0].length; i++) {
+    //   char = grid[0][i];
+    //   charArrCheck.push(char);
 
-      for (let k = 1; k < grid.length; k++) {
-        const elem = grid[k][i];
+    //   for (let k = 1; k < grid.length; k++) {
+    //     const elem = grid[k][i];
 
-        if (char === elem) {
-          count++;
-        } else {
-          count = 1;
-          char = elem;
-        }
+    //     if (char === elem) {
+    //       count++;
+    //       charArrCheck.push(elem);
+    //     } else {
+    //       count = 1;
+    //       char = elem;
+    //       charArrCheck = [
+    //         elem
+    //       ];
+    //     }
 
-        if (count === 3) return true;
-      }
+    //     if (count === 3) {
+    //       console.log(charArrCheck);
+    //       return true;
+    //     };
+    //   }
 
-    }
+    // }
 
-    return false;
+    // return false;
   }
 
   static setGridlines(gridLines) {

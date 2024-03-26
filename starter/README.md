@@ -159,14 +159,17 @@ Valid colors are:
 
   # Phase 5
     A method that checks for streaks horizontally/vertically
-      if true, callback
-      if false, do nothing
+      if true, return true
+      if all else fails, return false.
 
   # Phase 6
-    A method that removes the fruits at the 3 indices
-      if confirmed remove them and place random fruits there.
-      Continue to remove them until there is not streak there.
+    We are going to make some adjustments to the streak checks
+      if true, we will find the indices that make up a streak
+      and return an array that contain object that represent coordinates
 
   # Phase 7
+    We are going to use the array of objects that is return and use that to replace those elements with an empty string.
+
+  # Phase 8
     A method that records the amount of each fruit there is in the current context of the game
       Note: This become more of a thing with a smaller grid.
