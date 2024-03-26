@@ -89,39 +89,37 @@ describe ('Bejeweled', function () {
       });
 
       it('should return false that no horizontal streak was found', function () {
-        expect(Screen.validSwap(grid2)).to.be.false;
+        expect(Screen.horizontalStreak(grid2)).to.be.false;
       });
 
     });
 
-    // context('vertical streaks', function () {
+    context('vertical streaks', function () {
 
-    //   it('should return true that there is a vertical streak', function () {
-    //     expect(Screen.validSwap(grid3)).to.be.true;
-    //   });
+      it('should return a array of objects that represent coordinates of a found streak', function () {
+        const actual = Screen.verticalStreak(grid3);
+        console.log(actual);
 
-    //   it('should return false ther no vertical streak was found', function () {
-    //     expect(Screen.validSwap(grid2)).to.be.false;
-    //   });
+        const expected = [
+          { row: 0, col: 1 },
+          { row: 1, col: 1 },
+          { row: 2, col: 1 }
+        ];
 
-    //   it('should return a array of objects that represent coordinates of a found streak', function () {
-    //     const actual = Screen.findStreakCoordinatesV(grid3);
+        for (let i = 0; i < expected.length; i++) {
+          expect(actual[i]).to.deep.equal(expected[i]);
+        };
 
-    //     const expected = [
-    //       { row: 0, column: 1 },
-    //       { row: 1, column: 1 },
-    //       { row: 2, column: 1 }
-    //     ];
+      });
 
-    //     for (let i = 0; i < expected.length; i++) {
-    //       expect(actual[i]).to.deep.equal(expected[i]);
-    //     };
+      it('should return false ther no vertical streak was found', function () {
+        expect(Screen.verticalStreak(grid2)).to.be.false;
+      });
 
-    //   });
-
-    // });
+    });
 
   });
+
   // Add tests for swaps that set up combos
     // All this is saying is the callback called more the once.
 

@@ -108,70 +108,6 @@ class Screen {
     return false;
   }
 
-  static findStreakCoordinatesH(grid) {
-    // let count = 1;
-    // let char = "";
-    // let coordinates = [];
-
-    // for (let i = 0; i < grid.length; i++) {
-    //   char = grid[i][0];
-    //   coordinates.push({ row: i, column: 0 })
-
-    //   for (let k = 1; k < grid[i].length; k++) {
-    //     const elem = grid[i][k];
-
-    //     if (char === elem) {
-    //       count++;
-    //       coordinates.push({ row: i, column: k })
-
-    //     } else {
-    //       count = 1;
-    //       char = elem;
-    //       coordinates = [
-    //         { row: i, column: k }
-    //       ];
-    //     }
-
-    //     if( count === 3) return coordinates;
-    //   }
-
-    // }
-
-  }
-
-  static findStreakCoordinatesV(grid) {
-    // let count = 1;
-    // let char = "";
-    // let coordinates = [];
-
-    // console.log(grid);
-
-    // for (let i = 0; i < grid[0].length; i++) {
-    //   char = grid[0][i];
-    //   coordinates.push({ row: 0, column: i });
-    //   console.log(coordinates);
-
-    //   for (let k = 1; k < grid.length; k++) {
-    //     const elem = grid[k][i];
-
-    //     if (char === elem) {
-    //       count++;
-    //       coordinates.push({ row: k, column: i });
-    //     } else {
-    //       count = 1;
-    //       char = elem;
-    //       coordinates = [
-    //         { row: k, column: i }
-    //       ];
-    //     }
-
-    //     if (count === 3) return coordinates;
-    //   }
-
-    // }
-
-  }
-
   // added Method
   static horizontalStreak(grid) {
 
@@ -205,37 +141,31 @@ class Screen {
 
   // added Method
   static verticalStreak(grid) {
-    // let count = 1;
-    // let char = "";
-    // let charArrCheck = [];
+    // Lets try this a different way!
+    let streak = [];
+    let character = grid[0][0];
 
-    // for (let i = 0; i < grid[0].length; i++) {
-    //   char = grid[0][i];
-    //   charArrCheck.push(char);
+    for (let i = 0; i < grid[0].length; i++) {
 
-    //   for (let k = 1; k < grid.length; k++) {
-    //     const elem = grid[k][i];
+      for (let k = 0; k < grid.length; k++) {
+        let char = grid[k][i];
 
-    //     if (char === elem) {
-    //       count++;
-    //       charArrCheck.push(elem);
-    //     } else {
-    //       count = 1;
-    //       char = elem;
-    //       charArrCheck = [
-    //         elem
-    //       ];
-    //     }
+        if (char === character) {
+          streak.push({ row: k, col: i });
+        } else {
+          character = char;
+          streak = [
+            { row: k, col: i }
+          ];
+        }
 
-    //     if (count === 3) {
-    //       console.log(charArrCheck);
-    //       return true;
-    //     };
-    //   }
+        if (streak.length === 3) return streak;
+      }
 
-    // }
+      streak = [];
+    }
 
-    // return false;
+    return false;
   }
 
   static setGridlines(gridLines) {
