@@ -8,6 +8,7 @@ class Screen {
   static grid = [];
 
   static fruits = ["🥝", "🍓", "🥥", "🍇", "🍊"];
+  static score = 0;
 
   static borderChar = " ";
   static spacerCount = 1;
@@ -101,13 +102,35 @@ class Screen {
     return Screen.fruits[index];
   }
 
+  static combos(grid) {
+    let exit = true;
+
+    while(exit) {
+      const coordinates = Screen.validSwap(grid);
+
+      if (coordinates === false) {
+        exit = false;
+      } else {
+        Screen.replaceCoordinates(coordinates);
+      }
+
+    }
+
+  }
+
   // added Method
   static validSwap(grid) {
     const horizontal = Screen.horizontalStreak(grid);
-    if (horizontal) return horizontal;
+    if (horizontal) {
+      Screen.score += 100;
+      return horizontal;
+    }
 
     const vertical = Screen.verticalStreak(grid);
-    if (vertical) return vertical;
+    if (vertical) {
+      Screen.score += 100;
+      return vertical;
+    }
 
     return false;
   }
@@ -298,6 +321,7 @@ class Screen {
 
     console.log(Screen.message);
 
+    console.log(`Score: ${Screen.score}`);
   }
 
   static setTextColor(row, col, color) {

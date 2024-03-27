@@ -173,3 +173,7 @@ Valid colors are:
   # Phase 8
     A method that records the amount of each fruit there is in the current context of the game
       Note: This become more of a thing with a smaller grid.
+
+  # Phase 8
+    We need to implement the an scenario where we look for combos.
+    Luckly we already set our code for that case so we just need to add a while true statement.
