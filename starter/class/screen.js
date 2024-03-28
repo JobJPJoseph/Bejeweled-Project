@@ -111,7 +111,7 @@ class Screen {
       if (coordinates === false) {
         exit = false;
       } else {
-        Screen.replaceCoordinates(coordinates);
+        Screen.replaceCoordinates(grid, coordinates);
       }
 
     }
@@ -195,12 +195,12 @@ class Screen {
     return false;
   }
 
-  static replaceCoordinates(coordinates) {
+  static replaceCoordinates(grid, coordinates) { // make changes
 
     for (let i = 0; i < coordinates.length; i++) {
       const position = coordinates[i];
 
-      Screen.grid[position.row][position.col] = Screen.randomFruit();
+      grid[position.row][position.col] = Screen.randomFruit();
     }
 
   }

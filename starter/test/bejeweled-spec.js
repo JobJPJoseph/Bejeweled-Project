@@ -76,7 +76,6 @@ describe ('Bejeweled', function () {
 
       it('should return a array of objects that represent coordinates of a found streak', function () {
         const actual = Screen.validSwap(grid1);
-        console.log(actual);
 
         const expected = [
           { row: 0, col: 1 },
@@ -100,7 +99,6 @@ describe ('Bejeweled', function () {
 
       it('should return a array of objects that represent coordinates of a found streak', function () {
         const actual = Screen.validSwap(grid3);
-        console.log(actual);
 
         const expected = [
           { row: 0, col: 1 },
@@ -122,8 +120,6 @@ describe ('Bejeweled', function () {
 
   });
 
-  // Add tests for swaps that set up combos
-    // All this is saying is the callback called more the once.
   describe('replaceCoordinates', function () {
 
     const grid1 = [ // has horizontal
@@ -138,11 +134,38 @@ describe ('Bejeweled', function () {
 
       const coordinates = Screen.horizontalStreak(grid1);
 
-      Screen.replaceCoordinates(coordinates);
+      Screen.replaceCoordinates(grid1, coordinates);
 
       expect(randomFruitSpy).to.have.been.called;
 
       chai.spy.restore(Screen, 'randomFruit');
+    });
+
+  });
+
+  // Add tests for swaps that set up combos
+    // All this is saying is the callback called more the once.
+
+  describe('combos', function () {
+
+    const grid1 = [ // has horizontal
+      ["🥥", "🥝", "🥝","🥝","🍓","🍇","🍊","🍇"],
+      ["🍓", "🥥", "🥥","🍓","🍓","🍇","🍇","🍊"],
+      ["🥝", "🥝", "🍇","🍇","🥥","🥝","🥥","🥝"],
+      ["🍇", "🥝", "🥥","🍓","🍓","🍇","🍇","🍊"]
+    ];
+
+    context('Should continue to call validSwap untill it returns false', function () {
+
+      it('should call Screen.validSwap', function () {
+        const validSwapSpy = chai.spy.on(Screen, 'validSwap');
+
+        Screen.combos(grid1);
+
+        expect(validSwapSpy).to.have.been.called;
+        chai.spy.restore(Screen, 'validSwap');
+      });
+
     });
 
   });

@@ -52,7 +52,6 @@ class Bejeweled {
     Screen.addCommand('p', 'Place cursor', () => {
 
       if(Object.keys(getInput).length !== 0) {
-        console.log('getting called');
         const placeInput = {};
         placeInput['position'] = this.cursor.cursorCurrentPosition(); // Is an Object
         placeInput['char'] = Screen.grid[placeInput.position.row][placeInput.position.col];
@@ -61,6 +60,7 @@ class Bejeweled {
         Screen.setGrid(placeInput.position.row, placeInput.position.col, getInput.char);
         Screen.setGrid(getInput.position.row, getInput.position.col, placeInput.char);
         getInput = {};
+        Screen.combos(Screen.grid);
         Screen.render();
       } else {
         console.log('Choose an input first');
