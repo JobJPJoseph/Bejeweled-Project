@@ -205,6 +205,43 @@ class Screen {
 
   }
 
+  static noValidMoves(grid) {
+    const hash = {};
+
+    for (let i = 0; i < grid.length; i++) {
+      let row = grid[i];
+
+      for (let k = 0; k < row.length; k++) {
+        let char = row[k];
+
+        if (hash[char] === undefined) {
+          hash[char] = 1
+        } else {
+          hash[char]++;
+        }
+
+      }
+
+    }
+
+    return Screen.findAmount(hash);
+  }
+
+  static findAmount(obj) {
+
+    for (let i = 0; i < Screen.fruits.length; i++) {
+      const fruit = Screen.fruits[i];
+
+      if (obj[fruit] < 2) {
+        return false;
+      } else {
+        return true;
+      }
+
+    }
+
+  }
+
   static setGridlines(gridLines) {
     Screen.gridLines = gridLines;
     Screen.render();

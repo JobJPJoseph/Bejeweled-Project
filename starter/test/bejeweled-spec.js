@@ -173,4 +173,27 @@ describe ('Bejeweled', function () {
   // Add tests to check if there are no possible valid moves
     // This would be Phase 7
 
+  describe('noValidMoves', function () {
+
+    const grid1 = [
+      ["🥝", "🍓", "🥥", "🍇", "🍊"]
+    ];
+
+    const grid2 = [
+      ["🥝", "🍓", "🥥", "🍇", "🍊"],
+      ["🥝", "🍓", "🥥", "🍇", "🍊"]
+    ];
+
+    it('should return false when there is less the two of each fruit', function () {
+      const actual = Screen.noValidMoves(grid1);
+      expect(actual).to.be.false;
+    });
+
+    it('should return true when there is 2 or more of each fruit', function () {
+      const actual = Screen.noValidMoves(grid2);
+      expect(actual).to.be.true;
+    });
+
+  });
+
 });
