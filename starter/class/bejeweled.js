@@ -25,6 +25,9 @@ class Bejeweled {
       // right command: a
       // left command: d
       // quit command: q Nope we can't overite it.
+
+    if (!Screen.noValidMoves(Screen.grid)) Screen.quit();
+
     Screen.addCommand('w', 'Move up', () => {
       this.cursor.up();
       Screen.render();
